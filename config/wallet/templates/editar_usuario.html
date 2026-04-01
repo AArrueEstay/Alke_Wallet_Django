@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Editar Usuario</h3>
+
+{% if error %}
+<div class="alert alert-danger">
+    {{ error }}
+</div>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <!-- 🔒 NOMBRE BLOQUEADO -->
+    <input type="text" class="form-control mb-2" 
+           value="{{ usuario.nombre }}" disabled>
+
+    <!-- ✅ SOLO EMAIL EDITABLE -->
+    <input type="email" name="email" class="form-control mb-2"
+           value="{{ usuario.email }}">
+
+    <button class="btn btn-warning">Actualizar</button>
+</form>
+
+<a href="/dashboard/{{ usuario.id }}/" class="btn btn-secondary mt-3">
+    ⬅ Volver
+</a>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="/dashboard/{{ usuario.id }}/" class="btn btn-secondary mb-3">
+    ⬅ Volver
+</a>
+
+<h3>Nueva Transacción</h3>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="number" step="0.01" name="monto" class="form-control mb-2" placeholder="Monto">
+
+    <select name="tipo" class="form-control mb-2">
+        <option value="deposito">Depósito</option>
+        <option value="retiro">Retiro</option>
+    </select>
+
+    <button class="btn btn-success">Guardar</button>
+
+</form>
+
+{% endblock %}
